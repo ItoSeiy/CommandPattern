@@ -24,10 +24,12 @@ public class Player : MonoBehaviour
 			eulers = new Vector3(0f, 0f, 1f);
         }
 
-		var move = new MoveCommand(this.transform,h,v,_speed, eulers);
-		move.Execute();
+		var move = new MoveCommand(this.transform,h,v,_speed);
+		var rotate = new RotateCommand(this.transform, _speed, eulers);
 
-		CommandManager.Instance.AddCommand(move);
+		var transformCommand = new TransformCommand(move, rotate);
+		transformCommand.Execute();
+		CommandManager.Instance.AddCommand(transformCommand);
 	}
 
 }

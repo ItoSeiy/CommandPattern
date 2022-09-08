@@ -54,6 +54,8 @@ public class CommandManager : MonoBehaviour
 	private IEnumerator PlayBackCoroutine()
 	{
 		Debug.Log("Playback Start");
+			
+
 		foreach (var command in _commandBuffer)
 		{
 			command.Execute();
